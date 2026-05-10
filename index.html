@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data-Driven · CAI-CTeI | José Alejandro Espinoza Novoa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1B2D42;
+    --teal: #1B6CA8;
+    --gold: #C9973A;
+    --gold-light: #E8B96A;
+    --cream: #FAF7F2;
+    --cream-dark: #F0EBE1;
+    --text: #1A1A2E;
+    --text-muted: #5C6478;
+    --border: #D8D0C4;
+    --white: #FFFFFF;
+    --success: #2D7A4F;
+    --red: #A82828;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    scroll-behavior: smooth;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,27,42,0.97);
+    backdrop-filter: blur(8px);
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border-bottom: 1px solid rgba(201,151,58,0.25);
+    overflow-x: auto;
+    min-height: 48px;
+  }
+  nav a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+    padding: 14px 6px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  nav a:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+  .nav-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold) !important;
+    border: none !important;
+    padding: 0 !important;
+    flex-shrink: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    background-image:
+      radial-gradient(ellipse 80% 60% at 20% 40%, rgba(27,108,168,0.35) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 70%, rgba(201,151,58,0.2) 0%, transparent 55%);
+    color: var(--white);
+    padding: 64px 40px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.025) 59px, rgba(255,255,255,0.025) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.025) 59px, rgba(255,255,255,0.025) 60px);
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(201,151,58,0.2);
+    border: 1px solid rgba(201,151,58,0.5);
+    color: var(--gold-light);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    max-width: 700px;
+    position: relative;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 28px;
+    position: relative;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .meta-label { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .meta-value { font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,0.9); }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+    position: relative;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(201,151,58,0.4); }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+  .btn-teal {
+    background: var(--teal);
+    color: var(--white);
+  }
+  .btn-teal:hover { background: #155a8a; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(27,108,168,0.4); }
+
+  .hero-divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-top: 36px;
+    position: relative;
+  }
+
+  /* ── CONTAINER ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .section-header-left { display: flex; align-items: center; gap: 14px; }
+
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gold);
+    background: rgba(201,151,58,0.1);
+    border: 1px solid rgba(201,151,58,0.3);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  h2 { font-family: 'Playfair Display', serif; font-size: clamp(18px, 3vw, 24px); font-weight: 700; color: var(--navy); }
+  h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 28px 0 14px; }
+  h3:first-child { margin-top: 0; }
+
+  p { margin-bottom: 16px; color: #2C3347; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── PDF LINK BUTTON ── */
+  .pdf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(27,108,168,0.08);
+    border: 1px solid rgba(27,108,168,0.3);
+    border-radius: 6px;
+    color: var(--teal);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .pdf-link:hover { background: var(--teal); color: white; border-color: var(--teal); }
+  .pdf-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: var(--navy);
+    color: var(--white);
+    padding: 28px 32px;
+    border-radius: 10px;
+    border-left: 4px solid var(--gold);
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::after {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: rgba(201,151,58,0.12);
+    position: absolute;
+    top: -20px; right: 16px;
+    line-height: 1;
+  }
+  .highlight-box p { color: rgba(255,255,255,0.88); font-size: 15px; font-style: italic; margin: 0; }
+
+  /* ── OBJETIVOS ── */
+  .obj-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px; }
+  .obj-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    align-items: start;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .obj-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-color: var(--teal); }
+  .obj-card:first-child { background: var(--navy); border-color: var(--navy); }
+  .obj-card:first-child .obj-title { color: var(--gold-light); }
+  .obj-card:first-child .obj-text { color: rgba(255,255,255,0.8); }
+  .obj-icon { width: 40px; height: 40px; border-radius: 8px; background: rgba(27,108,168,0.1); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .obj-card:first-child .obj-icon { background: rgba(201,151,58,0.2); }
+  .obj-title { font-weight: 600; font-size: 13px; color: var(--teal); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+  .obj-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── TABLES ── */
+  .table-wrapper {
+    overflow-x: auto;
+    margin-top: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 500px; }
+  thead tr { background: var(--navy); color: var(--white); }
+  thead th { padding: 13px 16px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.6px; text-transform: uppercase; }
+  tbody tr:nth-child(even) { background: var(--cream-dark); }
+  tbody tr:nth-child(odd) { background: var(--white); }
+  tbody tr:hover { background: rgba(27,108,168,0.06); }
+  tbody td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; color: var(--text); }
+  tbody tr:last-child td { border-bottom: none; }
+  td strong { color: var(--navy); font-weight: 600; }
+  .td-gold { color: var(--gold) !important; font-weight: 700 !important; }
+  .td-total { background: rgba(13,27,42,0.06) !important; font-weight: 700; }
+
+  /* ── TREE ── */
+  .tree-container { display: flex; flex-direction: column; gap: 0; margin-top: 20px; }
+  .tree-center {
+    background: var(--navy); color: var(--white);
+    border-radius: 10px; padding: 18px 24px;
+    text-align: center; font-weight: 600; font-size: 15px;
+    border: 2px solid var(--gold);
+  }
+  .tree-branch-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .tree-branch { padding: 14px 16px; border-radius: 8px; text-align: center; font-size: 13px; line-height: 1.5; }
+  .tree-branch.cause { background: rgba(201,151,58,0.12); border: 1px solid rgba(201,151,58,0.4); color: #7A5A1A; }
+  .tree-branch.effect { background: rgba(168,40,40,0.1); border: 1px solid rgba(168,40,40,0.3); color: #7A2020; }
+  .tree-branch.means { background: rgba(27,108,168,0.1); border: 1px solid rgba(27,108,168,0.3); color: #0D4070; }
+  .tree-branch.end { background: rgba(45,122,79,0.1); border: 1px solid rgba(45,122,79,0.3); color: #1A5A35; }
+  .tree-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; opacity: 0.7; }
+  .tree-arrow { text-align: center; font-size: 20px; color: var(--text-muted); padding: 4px 0; }
+
+  /* ── STEPS GRID ── */
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-top: 20px; }
+  .step-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 16px;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .step-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+  .step-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal), var(--gold)); }
+  .step-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); font-weight: 500; margin-bottom: 6px; }
+  .step-title { font-weight: 600; font-size: 13.5px; color: var(--navy); margin-bottom: 6px; line-height: 1.35; }
+  .step-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── ACTIONS ── */
+  .actions-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .action-item { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .action-num { width: 26px; height: 26px; background: var(--teal); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+  .action-text { font-size: 13.5px; color: var(--text); line-height: 1.5; }
+
+  /* ── EAP ── */
+  .eap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; }
+  .eap-card { border-radius: 8px; padding: 16px 18px; border: 1px solid; }
+  .eap-card.fines { background: rgba(45,122,79,0.07); border-color: rgba(45,122,79,0.3); }
+  .eap-card.proposito { background: rgba(27,108,168,0.07); border-color: rgba(27,108,168,0.3); }
+  .eap-card.componentes { background: rgba(201,151,58,0.07); border-color: rgba(201,151,58,0.3); }
+  .eap-card.acciones { background: rgba(120,40,160,0.07); border-color: rgba(120,40,160,0.3); }
+  .eap-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
+  .eap-card.fines .eap-label { color: var(--success); }
+  .eap-card.proposito .eap-label { color: var(--teal); }
+  .eap-card.componentes .eap-label { color: var(--gold); }
+  .eap-card.acciones .eap-label { color: #7828A0; }
+  .eap-content { font-size: 13.5px; color: var(--text); line-height: 1.6; }
+
+  /* ── RESUMEN NARRATIVO ── */
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  .summary-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .summary-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--teal); margin-bottom: 6px; }
+  .summary-value { font-size: 14px; color: var(--text); line-height: 1.55; }
+  .summary-card.full { grid-column: 1 / -1; }
+  .summary-card.highlight { background: var(--navy); border-color: var(--navy); }
+  .summary-card.highlight .summary-label { color: var(--gold-light); }
+  .summary-card.highlight .summary-value { color: rgba(255,255,255,0.88); }
+
+  /* ── BUDGET ── */
+  .budget-total { background: var(--navy); color: var(--white); }
+  .budget-total td { color: var(--white) !important; font-weight: 700; }
+  .budget-total .td-gold { color: var(--gold-light) !important; }
+
+  /* ── REFERENCIAS ── */
+  .ref-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .ref-item {
+    background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 18px; display: grid; grid-template-columns: 28px 1fr;
+    gap: 12px; align-items: start; font-size: 13.5px; line-height: 1.6;
+    transition: border-color 0.2s;
+  }
+  .ref-item:hover { border-color: var(--teal); }
+  .ref-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); font-weight: 500; padding-top: 2px; text-align: right; }
+  .ref-text { color: var(--text); }
+  .ref-text a { color: var(--teal); word-break: break-all; }
+
+  /* ── FOOTER ── */
+  .footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 28px; font-size: 12.5px; }
+  .footer strong { color: rgba(255,255,255,0.8); }
+  .footer a { color: var(--gold-light); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero > div > * { animation: fadeUp 0.6s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 40px 20px 36px; }
+    .container { padding: 0 16px; }
+    .tree-branch-row { grid-template-columns: 1fr; }
+    .actions-list { grid-template-columns: 1fr; }
+    .eap-grid { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .summary-card.full { grid-column: 1; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    table { min-width: 380px; }
+    .hero-actions { flex-direction: column; }
+    nav { padding: 0 12px; gap: 4px; }
+    nav a { padding: 14px 4px; font-size: 10.5px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <span class="nav-brand">DATA-DRIVEN · CAI</span>
+  <a href="#intro">Introducción</a>
+  <a href="#pregunta">Pregunta</a>
+  <a href="#objetivos">Objetivos</a>
+  <a href="#consistencia">Consistencia</a>
+  <a href="#marco-logico">Marco Lógico</a>
+  <a href="#referencias">Referencias</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="container">
+    <div class="badge">CAI · CTeI · 2026–2027 · Código CAI1002020613</div>
+    <h1><em>Data-Driven:</em> Modelo de Analítica Descriptiva para la Optimización de KPIs en Microempresas de Servicios</h1>
+    <div class="hero-meta">
+      <div class="meta-item"><span class="meta-label">Estudiante</span><span class="meta-value">José Alejandro Espinoza Novoa</span></div>
+      <div class="meta-item"><span class="meta-label">Programa</span><span class="meta-value">Ingeniería de Sistemas · 6.º Semestre</span></div>
+      <div class="meta-item"><span class="meta-label">Institución</span><span class="meta-value">Universidad de Cundinamarca · Chía</span></div>
+      <div class="meta-item"><span class="meta-label">Docente</span><span class="meta-value">José Alejandro Martínez Escobar</span></div>
+      <div class="meta-item"><span class="meta-label">Fecha</span><span class="meta-value">10 de Mayo, 2026</span></div>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/jespinoza_ucundinamarca_edu_co/IgBOFhyDXsFLRrQUe0sBbmMKARVeuixuRxvujc04VhNGSNo?e=8FQewJ" target="_blank">
+        📁 Ver Portafolio Digital Completo
+      </a>
+      <a class="btn btn-outline" href="#marco-logico">↓ Marco Lógico</a>
+    </div>
+    <div class="hero-divider"></div>
+  </div>
+</header>
+
+<!-- ═══ MAIN ═══ -->
+<main>
+
+  <!-- §01 INTRODUCCIÓN -->
+  <section class="section" id="intro">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="section-number">§ 01</span>
+          <h2>Introducción y Planteamiento del Problema</h2>
+        </div>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/jespinoza_ucundinamarca_edu_co/IgBOFhyDXsFLRrQUe0sBbmMKARVeuixuRxvujc04VhNGSNo?e=8FQewJ" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Ver en Portafolio
+        </a>
+      </div>
+      <p>El <strong>Modelo Educativo Digital Transmoderno (MEDIT)</strong> busca que el aprendizaje sea un motor de transformación local (Muñoz, 2019). En el municipio de Chía, se ha identificado que las microempresas del sector servicios operan bajo una <em>"ceguera informativa"</em>, donde la recolección de datos es empírica y manual.</p>
+      <p>Esta falta de tecnificación impide la aplicación de estrategias de <strong>Business Analytics</strong>, limitando la competitividad regional frente a mercados globales (Joyanes Aguilar, 2021). El presente estudio se enfoca en resolver esta brecha mediante el diseño de una solución de analítica descriptiva para una unidad productiva local.</p>
+      <div class="highlight-box">
+        <p>La "ceguera informativa" no es solo un problema técnico: es una barrera estructural que impide que las microempresas locales compitan con herramientas de inteligencia operativa disponibles a gran escala.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- §02 PREGUNTA -->
+  <section class="section" id="pregunta">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="section-number">§ 02</span>
+          <h2>Pregunta de Investigación</h2>
+        </div>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/jespinoza_ucundinamarca_edu_co/IgBOFhyDXsFLRrQUe0sBbmMKARVeuixuRxvujc04VhNGSNo?e=8FQewJ" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Pregunta y Objetivos.pdf
+        </a>
+      </div>
+      <div class="highlight-box">
+        <p>¿De qué manera el diseño e implementación de un modelo de analítica descriptiva permite optimizar el seguimiento de indicadores de rendimiento (KPIs) en una microempresa de servicios en Chía durante el periodo 2026–2027?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- §03 OBJETIVOS -->
+  <section class="section" id="objetivos">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="section-number">§ 03</span>
+          <h2>Objetivos</h2>
+        </div>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/jespinoza_ucundinamarca_edu_co/IgBOFhyDXsFLRrQUe0sBbmMKARVeuixuRxvujc04VhNGSNo?e=8FQewJ" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Pregunta y Objetivos.pdf
+        </a>
+      </div>
+      <div class="obj-grid">
+        <div class="obj-card">
+          <div class="obj-icon">🎯</div>
+          <div><div class="obj-title">Objetivo General</div><div class="obj-text">Diseñar un modelo de analítica descriptiva para la optimización de la gestión operativa y financiera en una microempresa del municipio de Chía, mediante la integración y visualización de datos estratégicos.</div></div>
+        </div>
+        <div class="obj-card">
+          <div class="obj-icon">🔍</div>
+          <div><div class="obj-title">Objetivo Específico 1</div><div class="obj-text">Diagnosticar la metodología actual de recolección y almacenamiento de datos de la microempresa para identificar inconsistencias en los flujos de información.</div></div>
+        </div>
+        <div class="obj-card">
+          <div class="obj-icon">⚙️</div>
+          <div><div class="obj-title">Objetivo Específico 2</div><div class="obj-text">Estructurar un proceso de extracción y transformación de datos (ETL) que alimente un tablero de control automatizado.</div></div>
+        </div>
+        <div class="obj-card">
+          <div class="obj-icon">✅</div>
+          <div><div class="obj-title">Objetivo Específico 3</div><div class="obj-text">Validar el impacto del modelo en la agilidad de la toma de decisiones gerenciales mediante una prueba de usabilidad con el microempresario.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §04 CONSISTENCIA -->
+  <section class="section" id="consistencia">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="section-number">§ 04</span>
+          <h2>Matriz de Consistencia</h2>
+        </div>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/jespinoza_ucundinamarca_edu_co/IgBOFhyDXsFLRrQUe0sBbmMKARVeuixuRxvujc04VhNGSNo?e=8FQewJ" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Matriz de Consistencia.pdf
+        </a>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Elemento</th><th>General</th><th>Específico 1</th><th>Específico 2</th><th>Específico 3</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Problema</strong></td>
+              <td>¿De qué manera el diseño de un modelo de analítica descriptiva permite optimizar el seguimiento de KPIs en una microempresa del sector servicios en Chía?</td>
+              <td>¿Cuál es el estado actual de la gestión y flujo de datos dentro de la unidad productiva seleccionada?</td>
+              <td>¿Cómo debe estructurarse el flujo de procesamiento de datos para asegurar la integridad de los reportes?</td>
+              <td>¿Qué impacto genera la visualización de datos en la capacidad de respuesta de la gerencia?</td>
+            </tr>
+            <tr>
+              <td><strong>Objetivo</strong></td>
+              <td>Diseñar un modelo de analítica descriptiva que optimice el seguimiento de KPIs en una microempresa del sector servicios en el municipio de Chía.</td>
+              <td>Diagnosticar la situación actual de la gestión de datos para identificar cuellos de botella e inconsistencias en la información.</td>
+              <td>Estructurar un flujo ETL que centralice la información estratégica de la microempresa.</td>
+              <td>Validar la efectividad del modelo mediante pruebas de usabilidad que midan la mejora en la interpretación de los resultados.</td>
+            </tr>
+            <tr>
+              <td><strong>Hipótesis</strong></td>
+              <td>El diseño de un modelo de analítica descriptiva estructurado facilita la centralización de datos y mejora la precisión en el seguimiento de los indicadores clave.</td>
+              <td>La gestión actual de datos es empírica y fragmentada, lo que impide una visión integral del rendimiento del negocio.</td>
+              <td>Una estructura de datos normalizada reduce el tiempo de respuesta y los errores en la generación de reportes operativos.</td>
+              <td>La visualización de datos descriptivos incrementa la capacidad analítica del empresario frente a las desviaciones de sus KPIs.</td>
+            </tr>
+            <tr>
+              <td><strong>Variables</strong></td>
+              <td><strong>V. Indep:</strong> Modelo de analítica descriptiva. <strong>V. Dep:</strong> Seguimiento de KPIs.</td>
+              <td><strong>V:</strong> Flujo de datos / Integridad de la información.</td>
+              <td><strong>V:</strong> Arquitectura ETL / Calidad de datos.</td>
+              <td><strong>V:</strong> Capacidad analítica / Usabilidad del modelo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- §05 MARCO LÓGICO -->
+  <section class="section" id="marco-logico">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="section-number">§ 05</span>
+          <h2>Matriz de Marco Lógico — Los 9 Pasos</h2>
+        </div>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/jespinoza_ucundinamarca_edu_co/IgBOFhyDXsFLRrQUe0sBbmMKARVeuixuRxvujc04VhNGSNo?e=8FQewJ" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Matriz Marco Lógico y Actores.pdf
+        </a>
+      </div>
+
+      <!-- Steps overview -->
+      <div class="steps-grid" style="margin-bottom:36px;">
+        <div class="step-card"><div class="step-num">PASO 01</div><div class="step-title">Mapa de Actores</div><div class="step-desc">Interés vs. Poder de cada involucrado.</div></div>
+        <div class="step-card"><div class="step-num">PASO 02</div><div class="step-title">Análisis de Stakeholders</div><div class="step-desc">Roles, intereses, influencia y estrategias.</div></div>
+        <div class="step-card"><div class="step-num">PASO 03</div><div class="step-title">Árbol del Problema</div><div class="step-desc">Causas raíz y efectos estructurados.</div></div>
+        <div class="step-card"><div class="step-num">PASO 04</div><div class="step-title">Árbol de Objetivos</div><div class="step-desc">Medios, fines y propósito central.</div></div>
+        <div class="step-card"><div class="step-num">PASO 05</div><div class="step-title">Identificación de Acciones</div><div class="step-desc">Entrevistas, BD, dashboards, tests.</div></div>
+        <div class="step-card"><div class="step-num">PASO 06</div><div class="step-title">Estructura Analítica (EAP)</div><div class="step-desc">Fines, propósito, componentes, acciones.</div></div>
+        <div class="step-card"><div class="step-num">PASOS 07–09</div><div class="step-title">Resumen Narrativo, Indicadores y Supuestos</div><div class="step-desc">Tabla MML completa con componentes y actividades.</div></div>
+      </div>
+
+      <!-- PASOS 1–2 ACTORES -->
+      <h3>Pasos 1–2 · Mapa de Actores y Análisis de Involucrados</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Actor / Involucrado</th><th>Rol</th><th>Interés / Expectativa</th><th>Influencia</th><th>Estrategia de Gestión</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Gerente / Propietario</strong></td><td>Beneficiario Directo / Patrocinador</td><td>Ver datos claros para tomar decisiones, aumentar ganancias y reducir pérdidas de tiempo.</td><td>Alta — sin su acceso a datos el proyecto no procede.</td><td>Mantenerlo informado. Mostrar prototipos visuales rápidos para mantener su motivación.</td></tr>
+            <tr><td><strong>Empleados Operativos</strong></td><td>Proveedores de Información</td><td>Que la tecnología no los reemplace ni aumente su carga de trabajo.</td><td>Media — registran los datos diarios (basura entra, basura sale).</td><td>Capacitarlos. Asegurar que la herramienta facilitará, no vigilará, su trabajo.</td></tr>
+            <tr><td><strong>José A. Espinoza</strong></td><td>Investigador / Desarrollador</td><td>Cumplir objetivos del CAI, aplicar conocimientos y obtener buena calificación.</td><td>Alta — responsable técnico del diseño ETL y visualización.</td><td>Cumplir cronogramas y asegurar rigor técnico en la arquitectura de datos.</td></tr>
+            <tr><td><strong>U. Cundinamarca (Tutor)</strong></td><td>Evaluador Académico</td><td>Cumplimiento del MEDIT y rigor científico del proyecto.</td><td>Alta — autoridad para aprobar o reprobar el anteproyecto.</td><td>Cumplir estrictamente con la rúbrica, Normas APA 7 y formato de entrega.</td></tr>
+            <tr><td><strong>Clientes de la empresa</strong></td><td>Beneficiarios Indirectos</td><td>Mejor calidad y tiempos de servicio.</td><td>Baja — no deciden sobre el proyecto.</td><td>Monitorear si la optimización operativa mejora los tiempos de servicio.</td></tr>
+            <tr><td><strong>Alcaldía de Chía</strong></td><td>Beneficiario Indirecto</td><td>Fomentar competitividad y madurez digital de Pymes locales.</td><td>Baja — define el contexto económico pero no interviene directamente.</td><td>Seguimiento de contexto económico regional.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TABLA LISTADO INVOLUCRADOS -->
+      <h3>Listado de Involucrados (E · F · R)</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Involucrado</th><th>Expectativa (E)</th><th>Fuerza (F)</th><th>Rol (R)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>José Alejandro Espinoza</strong></td><td>Diseñar un modelo funcional que demuestre competencias en ingeniería y analítica.</td><td>Alta: Control total sobre el desarrollo técnico y arquitectura ETL.</td><td>Investigador y Desarrollador Líder.</td></tr>
+            <tr><td><strong>Gerente de la Microempresa</strong></td><td>Claridad sobre ingresos, gastos y rendimiento operativo para tomar mejores decisiones.</td><td>Alta: Provee acceso a la información y recursos de la empresa.</td><td>Patrocinador y Usuario Final.</td></tr>
+            <tr><td><strong>Personal Operativo</strong></td><td>Que la herramienta no aumente su carga de trabajo y sea fácil de usar.</td><td>Media: Capacidad de afectar la calidad de los datos recolectados.</td><td>Proveedores de datos primarios.</td></tr>
+            <tr><td><strong>Tutor de Proyecto (UdeC)</strong></td><td>Que el trabajo cumpla con el rigor metodológico del Marco Lógico y el enfoque MEDIT.</td><td>Alta: Autoridad académica para la aprobación del anteproyecto.</td><td>Supervisor y Evaluador.</td></tr>
+            <tr><td><strong>Alcaldía de Chía</strong></td><td>Fomentar la competitividad y madurez digital de las Pymes locales.</td><td>Baja: No interviene directamente, pero define el contexto económico.</td><td>Beneficiario Indirecto.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ÁRBOLES -->
+      <h3>Paso 3 · Árbol del Problema</h3>
+      <div class="tree-container">
+        <div class="tree-branch-row">
+          <div class="tree-branch effect"><div class="tree-label">⬆ Efecto</div>Baja competitividad regional</div>
+          <div class="tree-branch effect"><div class="tree-label">⬆ Efecto</div>Toma de decisiones errónea</div>
+          <div class="tree-branch effect"><div class="tree-label">⬆ Efecto</div>Inconsistencias en reportes financieros</div>
+        </div>
+        <div class="tree-arrow">↑</div>
+        <div class="tree-center">⚠️ Problema Central: Ceguera informativa y falta de tecnificación en microempresas de servicios en Chía</div>
+        <div class="tree-arrow">↓</div>
+        <div class="tree-branch-row">
+          <div class="tree-branch cause"><div class="tree-label">⬇ Causa</div>Recolección manual de datos</div>
+          <div class="tree-branch cause"><div class="tree-label">⬇ Causa</div>Procesos empíricos sin estructura</div>
+          <div class="tree-branch cause"><div class="tree-label">⬇ Causa</div>Ausencia de arquitectura ETL</div>
+        </div>
+      </div>
+
+      <h3>Paso 4 · Árbol de Objetivos</h3>
+      <div class="tree-container">
+        <div class="tree-branch-row">
+          <div class="tree-branch end"><div class="tree-label">⬆ Fin</div>Optimización de la gestión operativa</div>
+          <div class="tree-branch end"><div class="tree-label">⬆ Fin</div>Agilidad gerencial en decisiones</div>
+          <div class="tree-branch end"><div class="tree-label">⬆ Fin</div>Alineación con el MEDIT</div>
+        </div>
+        <div class="tree-arrow">↑</div>
+        <div class="tree-center">🎯 Objetivo Central: Diseñar un modelo de analítica descriptiva funcional</div>
+        <div class="tree-arrow">↓</div>
+        <div class="tree-branch-row">
+          <div class="tree-branch means"><div class="tree-label">⬇ Medio</div>Diagnóstico de flujos de datos</div>
+          <div class="tree-branch means"><div class="tree-label">⬇ Medio</div>Estructuración de proceso ETL</div>
+          <div class="tree-branch means"><div class="tree-label">⬇ Medio</div>Diseño de tableros de control</div>
+        </div>
+      </div>
+
+      <!-- ACCIONES -->
+      <h3>Paso 5 · Identificación de Acciones</h3>
+      <div class="actions-list">
+        <div class="action-item"><div class="action-num">1</div><div class="action-text">Levantamiento de requisitos con el microempresario.</div></div>
+        <div class="action-item"><div class="action-num">2</div><div class="action-text">Diseño de base de datos normalizada.</div></div>
+        <div class="action-item"><div class="action-num">3</div><div class="action-text">Creación de dashboards interactivos.</div></div>
+        <div class="action-item"><div class="action-num">4</div><div class="action-text">Test de usabilidad con usuario final.</div></div>
+      </div>
+
+      <!-- EAP -->
+      <h3>Paso 6 · Estructura Analítica del Proyecto (EAP)</h3>
+      <div class="eap-grid">
+        <div class="eap-card fines"><div class="eap-label">🌿 Fines</div><div class="eap-content">Transformación digital de la unidad productiva local.</div></div>
+        <div class="eap-card proposito"><div class="eap-label">🎯 Propósito</div><div class="eap-content">Modelo de analítica descriptiva implementado y validado.</div></div>
+        <div class="eap-card componentes"><div class="eap-label">📦 Componentes</div><div class="eap-content">Diagnóstico · Proceso ETL · Tablero de Control · Pruebas de usabilidad.</div></div>
+        <div class="eap-card acciones"><div class="eap-label">⚙️ Acciones</div><div class="eap-content">Entrevistas · Scripts de transformación · Diseño de interfaz · Encuesta de satisfacción.</div></div>
+      </div>
+
+      <!-- MML OBJETIVO GENERAL -->
+      <h3>Pasos 7–9 · Objetivo General e Indicadores</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th colspan="3" style="text-align:center;">Objetivo General: Diseñar un modelo de analítica descriptiva que optimice el seguimiento de KPIs en una microempresa del sector servicios en Chía.</th></tr>
+          <tr><th>Objetivo Específico</th><th>Medios de Verificación</th><th>Supuestos</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Obj. 1:</strong> Diagnosticar la situación actual de la gestión de datos.</td><td>Documento de levantamiento de requisitos (diagrama de procesos).</td><td>El personal proporciona información veraz sobre el manejo actual de los datos.</td></tr>
+            <tr><td><strong>Obj. 2:</strong> Estructurar un flujo ETL.</td><td>Diccionario de datos y scripts de transformación.</td><td>La calidad de los datos históricos permite su limpieza y estructuración.</td></tr>
+            <tr><td><strong>Obj. 3:</strong> Validar la efectividad del modelo mediante pruebas de usabilidad.</td><td>Cuestionario de validación de usabilidad firmado por el empresario.</td><td>El gerente tiene disponibilidad de tiempo para realizar las pruebas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MML COMPONENTES -->
+      <h3>Componentes del Marco Lógico</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Componente</th><th>Objetivo Específico</th><th>Indicador</th><th>Medios de Verificación</th><th>Supuestos</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Diagnóstico de gestión de datos</strong></td><td>Diagnosticar la situación actual para identificar cuellos de botella e inconsistencias.</td><td>1 documento de diagnóstico completado.</td><td>Documento de levantamiento de requisitos.</td><td>El personal colabora activamente en las entrevistas.</td></tr>
+            <tr><td><strong>Estructuración del flujo ETL</strong></td><td>Estructurar un flujo ETL que centralice la información estratégica.</td><td>1 modelo de base de datos relacional funcional.</td><td>Diccionario de datos y scripts.</td><td>Disponibilidad técnica para extraer los datos origen.</td></tr>
+            <tr><td><strong>Tablero de control y validación</strong></td><td>Validar la efectividad del modelo mediante pruebas con la gerencia.</td><td>Calificación &gt; 4.0/5.0 en la encuesta.</td><td>Cuestionario de usabilidad firmado.</td><td>Disposición del gerente para adoptar el modelo.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ACTIVIDADES -->
+      <h3>Actividades del Proyecto</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Actividad</th><th>Componente</th><th>Responsable</th><th>Fecha Estimada</th></tr></thead>
+          <tbody>
+            <tr><td>Entrevistas con el gerente para mapear KPIs críticos.</td><td>Diagnóstico de gestión de datos</td><td>José Alejandro Espinoza Novoa</td><td>Mes 1</td></tr>
+            <tr><td>Diseñar base de datos relacional normalizada.</td><td>Estructuración del flujo ETL</td><td>José Alejandro Espinoza Novoa</td><td>Mes 2</td></tr>
+            <tr><td>Desarrollar scripts de limpieza y transformación.</td><td>Estructuración del flujo ETL</td><td>José Alejandro Espinoza Novoa</td><td>Mes 2</td></tr>
+            <tr><td>Desarrollar tablero de visualización.</td><td>Tablero de control y validación</td><td>José Alejandro Espinoza Novoa</td><td>Mes 3</td></tr>
+            <tr><td>Ejecutar prueba piloto y encuesta de usabilidad.</td><td>Tablero de control y validación</td><td>José Alejandro Espinoza Novoa</td><td>Mes 4</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PRESUPUESTO -->
+      <h3>Presupuesto del Proyecto</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Ítem</th><th>Costo (COP)</th><th>Fuente de Financiamiento</th></tr></thead>
+          <tbody>
+            <tr><td>Equipos de cómputo (amortización de uso)</td><td>$ 500.000</td><td>Recursos propios</td></tr>
+            <tr><td>Licencias de software y entorno de desarrollo</td><td>$ 0</td><td>Versiones académicas / Open Source</td></tr>
+            <tr><td>Transporte y logística (visitas a la empresa)</td><td>$ 150.000</td><td>Recursos propios</td></tr>
+            <tr><td>Papelería, impresiones y encuadernación</td><td>$ 50.000</td><td>Recursos propios</td></tr>
+            <tr class="budget-total"><td><strong>TOTAL</strong></td><td class="td-gold"><strong>$ 700.000</strong></td><td>Recursos propios del investigador</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- RESUMEN NARRATIVO -->
+      <h3>Resumen Narrativo del Proyecto</h3>
+      <div class="summary-grid">
+        <div class="summary-card highlight full"><div class="summary-label">Título del Proyecto</div><div class="summary-value">Implementación de un modelo de analítica descriptiva para optimizar el seguimiento de KPIs en una microempresa del sector servicios.</div></div>
+        <div class="summary-card"><div class="summary-label">Tema</div><div class="summary-value">Diseño e implementación de analítica descriptiva para la competitividad empresarial.</div></div>
+        <div class="summary-card"><div class="summary-label">Duración</div><div class="summary-value">4 Meses — Periodo 2026-2027</div></div>
+        <div class="summary-card"><div class="summary-label">Financiamiento</div><div class="summary-value">Recursos propios del investigador.</div></div>
+        <div class="summary-card"><div class="summary-label">Equipo del Proyecto</div><div class="summary-value">José Alejandro Espinoza Novoa</div></div>
+        <div class="summary-card full"><div class="summary-label">Resultados Esperados</div><div class="summary-value">Toma de decisiones gerenciales basada en evidencia · Reducción de tiempos en la generación de reportes · Centralización de la información en un entorno digital.</div></div>
+        <div class="summary-card full"><div class="summary-label">Evaluación</div><div class="summary-value">Se aplicará una encuesta de usabilidad y satisfacción al gerente al finalizar la prueba piloto del tablero.</div></div>
+        <div class="summary-card full"><div class="summary-label">Beneficios</div><div class="summary-value">La microempresa obtendrá mayor control sobre sus flujos operativos y financieros, mitigando la ceguera informativa.</div></div>
+        <div class="summary-card highlight full"><div class="summary-label">Impacto Esperado</div><div class="summary-value">Se espera impactar positivamente la competitividad y madurez digital de la unidad productiva, alineándose con el enfoque MEDIT de transformación local.</div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- §06 REFERENCIAS -->
+  <section class="section" id="referencias">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="section-number">§ 06</span>
+          <h2>Referencias Bibliográficas — APA 7</h2>
+        </div>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/jespinoza_ucundinamarca_edu_co/IgBOFhyDXsFLRrQUe0sBbmMKARVeuixuRxvujc04VhNGSNo?e=8FQewJ" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Marco Teórico - Estado del Arte.pdf
+        </a>
+      </div>
+      <ul class="ref-list">
+        <li class="ref-item"><span class="ref-num">[1]</span><span class="ref-text">Anyanwu, E., &amp; Ohiagu, O. P. (2022). Data analytics in small and mid-size enterprises: Enablers and inhibitors for business value. <em>Journal of Enterprise and Business Intelligence, 2</em>(2), 77–88. <a href="https://doi.org/10.53759/5181/JEBI202202009" target="_blank">https://doi.org/10.53759/5181/JEBI202202009</a></span></li>
+        <li class="ref-item"><span class="ref-num">[2]</span><span class="ref-text">Bar-Gill, S., Brynjolfsson, E., &amp; Hak, N. (2023). <em>Helping Small Businesses become more Data-Driven: A Field Experiment on eBay</em> (NBER Working Paper No. w31089). National Bureau of Economic Research. <a href="https://www.nber.org/papers/w31089" target="_blank">https://www.nber.org/papers/w31089</a></span></li>
+        <li class="ref-item"><span class="ref-num">[3]</span><span class="ref-text">Ezeife, E., Eyeregba, M. E., Mokogwu, C., &amp; Olorunyomi, T. D. (2024). Integrating predictive analytics into strategic decision-making. <em>World Journal of Advanced Research and Reviews, 24</em>(2), 2490–2507. <a href="https://doi.org/10.30574/wjarr.2024.24.2.3635" target="_blank">https://doi.org/10.30574/wjarr.2024.24.2.3635</a></span></li>
+        <li class="ref-item"><span class="ref-num">[4]</span><span class="ref-text">Fontalvo, T., De La Hoz, E., &amp; De La Hoz, E. (2018). Método Análisis Envolvente de Datos y Redes Neuronales en la Evaluación de Eficiencia Técnica. <em>Información Tecnológica, 29</em>(6), 267–276. <a href="http://dx.doi.org/10.4067/S0718-07642018000600267" target="_blank">http://dx.doi.org/10.4067/S0718-07642018000600267</a></span></li>
+        <li class="ref-item"><span class="ref-num">[5]</span><span class="ref-text">Islam, S., Hossain, E., Rahman, M. S., Rahman, M. M., Khan, S. I., &amp; Ashik, A. A. M. (2023). Digital Transformation in SMEs. <em>Journal of Business and Management Studies, 5</em>(6), 177–186. <a href="https://doi.org/10.32996/jbms.2023.5.6.14" target="_blank">https://doi.org/10.32996/jbms.2023.5.6.14</a></span></li>
+        <li class="ref-item"><span class="ref-num">[6]</span><span class="ref-text">Joyanes Aguilar, L. (2021). <em>Big Data, Business Intelligence y Data Science: La revolución de los datos</em>. Marcombo.</span></li>
+        <li class="ref-item"><span class="ref-num">[7]</span><span class="ref-text">Llave, M. (2022). Data analytics in small and mid-size enterprises. <em>International Journal of Accounting Information Systems, 44</em>, 100547. <a href="https://doi.org/10.1016/j.accinf.2021.100547" target="_blank">https://doi.org/10.1016/j.accinf.2021.100547</a></span></li>
+        <li class="ref-item"><span class="ref-num">[8]</span><span class="ref-text">Muñoz, A. (2019). <em>Modelo Educativo Digital Transmoderno (MEDIT)</em>. Universidad de Cundinamarca.</span></li>
+        <li class="ref-item"><span class="ref-num">[9]</span><span class="ref-text">Pacheco, F. L., &amp; Gomes dos Santos, A. (2023). Implementación del análisis de datos en pequeñas empresas. <em>Journal of Interdisciplinary Debates, 4</em>(4), 111–138. <a href="https://doi.org/10.51249/jid.v4i04.1638" target="_blank">https://doi.org/10.51249/jid.v4i04.1638</a></span></li>
+        <li class="ref-item"><span class="ref-num">[10]</span><span class="ref-text">Ray, A., Kumar, R., &amp; Deepanshi. (2025). Data Analytics for Business Decision-Making. <em>Economic Sciences (ES), 21</em>(02(S)), 191–200. <a href="https://doi.org/10.69889/gy56vg95" target="_blank">https://doi.org/10.69889/gy56vg95</a></span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p style="margin-bottom:8px;">
+    <strong>Data-Driven · Proyecto CAI-CTeI · 2026–2027</strong>
+  </p>
+  <p style="margin-bottom:12px;">
+    Universidad de Cundinamarca · Seccional Chía · Ingeniería de Sistemas
+  </p>
+  <a href="https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/jespinoza_ucundinamarca_edu_co/IgBOFhyDXsFLRrQUe0sBbmMKARVeuixuRxvujc04VhNGSNo?e=8FQewJ" target="_blank" style="color:var(--gold-light);font-size:13px;">
+    📁 Acceder al Portafolio Digital Completo →
+  </a>
+  <p style="margin-top:14px;font-size:11.5px;">Copyright © 2024–2026 UCundinamarca · www.ucundinamarca.edu.co · Vigilada MinEducación</p>
+</footer>
+
+</body>
+</html>
