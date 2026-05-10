@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data-Driven · CAI-CTeI | José Alejandro Espinoza Novoa</title>
+<title>Data-Driven · Anteproyecto | José Alejandro Espinoza Novoa</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -145,22 +145,10 @@
     cursor: pointer;
     border: none;
   }
-  .btn-gold {
-    background: var(--gold);
-    color: var(--navy);
-  }
+  .btn-gold { background: var(--gold); color: var(--navy); }
   .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(201,151,58,0.4); }
-  .btn-outline {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.3);
-    color: rgba(255,255,255,0.85);
-  }
+  .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); }
   .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
-  .btn-teal {
-    background: var(--teal);
-    color: var(--white);
-  }
-  .btn-teal:hover { background: #155a8a; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(27,108,168,0.4); }
 
   .hero-divider {
     height: 1px;
@@ -251,15 +239,9 @@
   /* ── OBJETIVOS ── */
   .obj-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px; }
   .obj-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 22px;
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    gap: 16px;
-    align-items: start;
-    transition: box-shadow 0.2s, border-color 0.2s;
+    background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 22px; display: grid; grid-template-columns: 40px 1fr; gap: 16px;
+    align-items: start; transition: box-shadow 0.2s, border-color 0.2s;
   }
   .obj-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-color: var(--teal); }
   .obj-card:first-child { background: var(--navy); border-color: var(--navy); }
@@ -272,11 +254,8 @@
 
   /* ── TABLES ── */
   .table-wrapper {
-    overflow-x: auto;
-    margin-top: 16px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    overflow-x: auto; margin-top: 16px; margin-bottom: 24px; border-radius: 10px;
+    border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.05);
   }
   table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 500px; }
   thead tr { background: var(--navy); color: var(--white); }
@@ -288,15 +267,14 @@
   tbody tr:last-child td { border-bottom: none; }
   td strong { color: var(--navy); font-weight: 600; }
   .td-gold { color: var(--gold) !important; font-weight: 700 !important; }
-  .td-total { background: rgba(13,27,42,0.06) !important; font-weight: 700; }
+  .budget-total { background: var(--navy); color: var(--white); }
+  .budget-total td { color: var(--white) !important; font-weight: 700; }
 
   /* ── TREE ── */
-  .tree-container { display: flex; flex-direction: column; gap: 0; margin-top: 20px; }
+  .tree-container { display: flex; flex-direction: column; gap: 0; margin-top: 20px; margin-bottom: 24px; }
   .tree-center {
-    background: var(--navy); color: var(--white);
-    border-radius: 10px; padding: 18px 24px;
-    text-align: center; font-weight: 600; font-size: 15px;
-    border: 2px solid var(--gold);
+    background: var(--navy); color: var(--white); border-radius: 10px;
+    padding: 18px 24px; text-align: center; font-weight: 600; font-size: 15px; border: 2px solid var(--gold);
   }
   .tree-branch-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
   .tree-branch { padding: 14px 16px; border-radius: 8px; text-align: center; font-size: 13px; line-height: 1.5; }
@@ -307,28 +285,14 @@
   .tree-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; opacity: 0.7; }
   .tree-arrow { text-align: center; font-size: 20px; color: var(--text-muted); padding: 4px 0; }
 
-  /* ── STEPS GRID ── */
-  .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-top: 20px; }
-  .step-card {
-    background: var(--white); border: 1px solid var(--border);
-    border-radius: 10px; padding: 18px 16px;
-    position: relative; overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .step-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
-  .step-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal), var(--gold)); }
-  .step-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); font-weight: 500; margin-bottom: 6px; }
-  .step-title { font-weight: 600; font-size: 13.5px; color: var(--navy); margin-bottom: 6px; line-height: 1.35; }
-  .step-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
-
   /* ── ACTIONS ── */
-  .actions-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .actions-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; margin-bottom: 24px; }
   .action-item { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; }
   .action-num { width: 26px; height: 26px; background: var(--teal); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
   .action-text { font-size: 13.5px; color: var(--text); line-height: 1.5; }
 
   /* ── EAP ── */
-  .eap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; }
+  .eap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; margin-bottom: 24px; }
   .eap-card { border-radius: 8px; padding: 16px 18px; border: 1px solid; }
   .eap-card.fines { background: rgba(45,122,79,0.07); border-color: rgba(45,122,79,0.3); }
   .eap-card.proposito { background: rgba(27,108,168,0.07); border-color: rgba(27,108,168,0.3); }
@@ -351,11 +315,6 @@
   .summary-card.highlight .summary-label { color: var(--gold-light); }
   .summary-card.highlight .summary-value { color: rgba(255,255,255,0.88); }
 
-  /* ── BUDGET ── */
-  .budget-total { background: var(--navy); color: var(--white); }
-  .budget-total td { color: var(--white) !important; font-weight: 700; }
-  .budget-total .td-gold { color: var(--gold-light) !important; }
-
   /* ── REFERENCIAS ── */
   .ref-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
   .ref-item {
@@ -372,7 +331,6 @@
   /* ── FOOTER ── */
   .footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 28px; font-size: 12.5px; }
   .footer strong { color: rgba(255,255,255,0.8); }
-  .footer a { color: var(--gold-light); }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -390,7 +348,6 @@
     .eap-grid { grid-template-columns: 1fr; }
     .summary-grid { grid-template-columns: 1fr; }
     .summary-card.full { grid-column: 1; }
-    .steps-grid { grid-template-columns: 1fr 1fr; }
     table { min-width: 380px; }
     .hero-actions { flex-direction: column; }
     nav { padding: 0 12px; gap: 4px; }
@@ -400,18 +357,16 @@
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
 <nav>
   <span class="nav-brand">DATA-DRIVEN · CAI</span>
   <a href="#intro">Introducción</a>
-  <a href="#pregunta">Pregunta</a>
   <a href="#objetivos">Objetivos</a>
   <a href="#consistencia">Consistencia</a>
-  <a href="#marco-logico">Marco Lógico</a>
+  <a href="#metodologia">Metodología</a>
+  <a href="#plan-operativo">Plan Operativo</a>
   <a href="#referencias">Referencias</a>
 </nav>
 
-<!-- ═══ HERO ═══ -->
 <header class="hero">
   <div class="container">
     <div class="badge">CAI · CTeI · 2026–2027 · Código CAI1002020613</div>
@@ -423,72 +378,46 @@
       <div class="meta-item"><span class="meta-label">Docente</span><span class="meta-value">José Alejandro Martínez Escobar</span></div>
       <div class="meta-item"><span class="meta-label">Fecha</span><span class="meta-value">10 de Mayo, 2026</span></div>
     </div>
-    <div class="hero-actions">
-      <a class="btn btn-gold" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQB5sOuwhRTxRazv0dgtLcloAaj83910Dye2rl24_l7v3HA?e=KELEAg" target="_blank">
-        📁 Ver Portafolio Digital Completo
-      </a>
-      <a class="btn btn-outline" href="#marco-logico">↓ Marco Lógico</a>
-    </div>
     <div class="hero-divider"></div>
   </div>
 </header>
 
-<!-- ═══ MAIN ═══ -->
 <main>
 
-  <!-- §01 INTRODUCCIÓN -->
   <section class="section" id="intro">
     <div class="container">
       <div class="section-header">
         <div class="section-header-left">
-          <span class="section-number">§ 01</span>
+          <span class="section-number">I.</span>
           <h2>Introducción y Planteamiento del Problema</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQB5sOuwhRTxRazv0dgtLcloAaj83910Dye2rl24_l7v3HA?e=KELEAg" target="_blank">
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQA34c9fi78BSJxJvBcw_kgkASYEfxpkEsZIqafGfmS0Qcw?e=Wzvtqx" target="_blank">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Ver en Portafolio
+          Ver Documento
         </a>
       </div>
       <p>El <strong>Modelo Educativo Digital Transmoderno (MEDIT)</strong> busca que el aprendizaje sea un motor de transformación local (Muñoz, 2019). En el municipio de Chía, se ha identificado que las microempresas del sector servicios operan bajo una <em>"ceguera informativa"</em>, donde la recolección de datos es empírica y manual.</p>
       <p>Esta falta de tecnificación impide la aplicación de estrategias de <strong>Business Analytics</strong>, limitando la competitividad regional frente a mercados globales (Joyanes Aguilar, 2021). El presente estudio se enfoca en resolver esta brecha mediante el diseño de una solución de analítica descriptiva para una unidad productiva local.</p>
-      <div class="highlight-box">
-        <p>La "ceguera informativa" no es solo un problema técnico: es una barrera estructural que impide que las microempresas locales compitan con herramientas de inteligencia operativa disponibles a gran escala.</p>
-      </div>
     </div>
   </section>
 
-  <!-- §02 PREGUNTA -->
-  <section class="section" id="pregunta">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-header-left">
-          <span class="section-number">§ 02</span>
-          <h2>Pregunta de Investigación</h2>
-        </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQB5sOuwhRTxRazv0dgtLcloAaj83910Dye2rl24_l7v3HA?e=KELEAg" target="_blank">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Pregunta y Objetivos.pdf
-        </a>
-      </div>
-      <div class="highlight-box">
-        <p>¿De qué manera el diseño e implementación de un modelo de analítica descriptiva permite optimizar el seguimiento de indicadores de rendimiento (KPIs) en una microempresa de servicios en Chía durante el periodo 2026–2027?</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- §03 OBJETIVOS -->
   <section class="section" id="objetivos">
     <div class="container">
       <div class="section-header">
         <div class="section-header-left">
-          <span class="section-number">§ 03</span>
-          <h2>Objetivos</h2>
+          <span class="section-number">II.</span>
+          <h2>Pregunta de Investigación y Objetivos</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQB5sOuwhRTxRazv0dgtLcloAaj83910Dye2rl24_l7v3HA?e=KELEAg" target="_blank">
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQA34c9fi78BSJxJvBcw_kgkASYEfxpkEsZIqafGfmS0Qcw?e=C0lKaY" target="_blank">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Pregunta y Objetivos.pdf
+          Ver Documento
         </a>
       </div>
+      
+      <div class="highlight-box">
+        <p>¿De qué manera el diseño e implementación de un modelo de analítica descriptiva permite optimizar el seguimiento de indicadores de rendimiento (KPIs) en una microempresa de servicios en Chía durante el periodo 2026–2027?</p>
+      </div>
+
       <div class="obj-grid">
         <div class="obj-card">
           <div class="obj-icon">🎯</div>
@@ -510,17 +439,16 @@
     </div>
   </section>
 
-  <!-- §04 CONSISTENCIA -->
   <section class="section" id="consistencia">
     <div class="container">
       <div class="section-header">
         <div class="section-header-left">
-          <span class="section-number">§ 04</span>
+          <span class="section-number">III.</span>
           <h2>Matriz de Consistencia</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQB5sOuwhRTxRazv0dgtLcloAaj83910Dye2rl24_l7v3HA?e=KELEAg" target="_blank">
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCqKZ-M8YRiTIbC-4acv0hVARB14PX4_BIY0noh_DMtnHU?e=5gaQ5x" target="_blank">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Matriz de Consistencia.pdf
+          Ver Documento
         </a>
       </div>
       <div class="table-wrapper">
@@ -561,33 +489,19 @@
     </div>
   </section>
 
-  <!-- §05 MARCO LÓGICO -->
-  <section class="section" id="marco-logico">
+  <section class="section" id="metodologia">
     <div class="container">
       <div class="section-header">
         <div class="section-header-left">
-          <span class="section-number">§ 05</span>
-          <h2>Matriz de Marco Lógico — Los 9 Pasos</h2>
+          <span class="section-number">IV.</span>
+          <h2>Metodología de la Investigación (Marco Lógico)</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQB5sOuwhRTxRazv0dgtLcloAaj83910Dye2rl24_l7v3HA?e=KELEAg" target="_blank">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Matriz Marco Lógico y Actores.pdf
-        </a>
       </div>
 
-      <!-- Steps overview -->
-      <div class="steps-grid" style="margin-bottom:36px;">
-        <div class="step-card"><div class="step-num">PASO 01</div><div class="step-title">Mapa de Actores</div><div class="step-desc">Interés vs. Poder de cada involucrado.</div></div>
-        <div class="step-card"><div class="step-num">PASO 02</div><div class="step-title">Análisis de Stakeholders</div><div class="step-desc">Roles, intereses, influencia y estrategias.</div></div>
-        <div class="step-card"><div class="step-num">PASO 03</div><div class="step-title">Árbol del Problema</div><div class="step-desc">Causas raíz y efectos estructurados.</div></div>
-        <div class="step-card"><div class="step-num">PASO 04</div><div class="step-title">Árbol de Objetivos</div><div class="step-desc">Medios, fines y propósito central.</div></div>
-        <div class="step-card"><div class="step-num">PASO 05</div><div class="step-title">Identificación de Acciones</div><div class="step-desc">Entrevistas, BD, dashboards, tests.</div></div>
-        <div class="step-card"><div class="step-num">PASO 06</div><div class="step-title">Estructura Analítica (EAP)</div><div class="step-desc">Fines, propósito, componentes, acciones.</div></div>
-        <div class="step-card"><div class="step-num">PASOS 07–09</div><div class="step-title">Resumen Narrativo, Indicadores y Supuestos</div><div class="step-desc">Tabla MML completa con componentes y actividades.</div></div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+        <h3>Mapa de Actores y Análisis de Involucrados</h3>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Bykhld" target="_blank">Ver Documento</a>
       </div>
-
-      <!-- PASOS 1–2 ACTORES -->
-      <h3>Pasos 1–2 · Mapa de Actores y Análisis de Involucrados</h3>
       <div class="table-wrapper">
         <table>
           <thead><tr><th>Actor / Involucrado</th><th>Rol</th><th>Interés / Expectativa</th><th>Influencia</th><th>Estrategia de Gestión</th></tr></thead>
@@ -602,8 +516,10 @@
         </table>
       </div>
 
-      <!-- TABLA LISTADO INVOLUCRADOS -->
-      <h3>Listado de Involucrados (E · F · R)</h3>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+        <h3>Listado de Involucrados (E · F · R) y Mapa de Interés</h3>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Bykhld" target="_blank">Ver Documento</a>
+      </div>
       <div class="table-wrapper">
         <table>
           <thead><tr><th>Involucrado</th><th>Expectativa (E)</th><th>Fuerza (F)</th><th>Rol (R)</th></tr></thead>
@@ -616,17 +532,14 @@
           </tbody>
         </table>
       </div>
-
-      <!-- MAPA DE ACTORES IMAGEN -->
-      <h3>Mapa de Actores · Interés vs. Poder</h3>
-      <div style="margin-top:16px;border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-        <img src="https://raw.githubusercontent.com/alejandroespinozanovoa-create/portafolio-cai/main/Actores%20Clave%20%28Alto%20Inter%C3%A9s%20%20Alto%20Poder%29.png"
-             alt="Mapa de Actores - Interés vs Poder"
-             style="width:100%;display:block;" />
+      <div style="margin-top:16px; margin-bottom: 36px; border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+        <img src="https://raw.githubusercontent.com/alejandroespinozanovoa-create/portafolio-cai/main/Actores%20Clave%20(Alto%20Inter%C3%A9s%20%20Alto%20Poder).png" alt="Mapa de Actores - Interés vs Poder" style="width:100%;display:block;" />
       </div>
 
-      <!-- ÁRBOLES -->
-      <h3>Paso 3 · Árbol del Problema</h3>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+        <h3>Árbol del Problema</h3>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">Ver Documento</a>
+      </div>
       <div class="tree-container">
         <div class="tree-branch-row">
           <div class="tree-branch effect"><div class="tree-label">⬆ Efecto</div>Baja competitividad regional</div>
@@ -642,15 +555,14 @@
           <div class="tree-branch cause"><div class="tree-label">⬇ Causa</div>Ausencia de arquitectura ETL</div>
         </div>
       </div>
-
-      <!-- ÁRBOL DEL PROBLEMA IMAGEN -->
-      <div style="margin-top:16px;border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-        <img src="https://raw.githubusercontent.com/alejandroespinozanovoa-create/portafolio-cai/main/Sophisticated%20Infographic%20Tree%20for%20Microenterprise%20Analysis.png"
-             alt="Árbol del Problema - Analítica Microempresas"
-             style="width:100%;display:block;" />
+      <div style="margin-top:16px; margin-bottom: 36px; border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+        <img src="https://raw.githubusercontent.com/alejandroespinozanovoa-create/portafolio-cai/main/Sophisticated%20Infographic%20Tree%20for%20Microenterprise%20Analysis.png" alt="Árbol del Problema - Analítica Microempresas" style="width:100%;display:block;" />
       </div>
 
-      <h3>Paso 4 · Árbol de Objetivos</h3>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+        <h3>Árbol de Objetivos</h3>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">Ver Documento</a>
+      </div>
       <div class="tree-container">
         <div class="tree-branch-row">
           <div class="tree-branch end"><div class="tree-label">⬆ Fin</div>Optimización de la gestión operativa</div>
@@ -667,26 +579,39 @@
         </div>
       </div>
 
-      <!-- ACCIONES -->
-      <h3>Paso 5 · Identificación de Acciones</h3>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+        <h3>Identificación de Acciones y Estructura Analítica del Proyecto (EAP)</h3>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">Ver Documento</a>
+      </div>
       <div class="actions-list">
         <div class="action-item"><div class="action-num">1</div><div class="action-text">Levantamiento de requisitos con el microempresario.</div></div>
         <div class="action-item"><div class="action-num">2</div><div class="action-text">Diseño de base de datos normalizada.</div></div>
         <div class="action-item"><div class="action-num">3</div><div class="action-text">Creación de dashboards interactivos.</div></div>
         <div class="action-item"><div class="action-num">4</div><div class="action-text">Test de usabilidad con usuario final.</div></div>
       </div>
-
-      <!-- EAP -->
-      <h3>Paso 6 · Estructura Analítica del Proyecto (EAP)</h3>
       <div class="eap-grid">
         <div class="eap-card fines"><div class="eap-label">🌿 Fines</div><div class="eap-content">Transformación digital de la unidad productiva local.</div></div>
         <div class="eap-card proposito"><div class="eap-label">🎯 Propósito</div><div class="eap-content">Modelo de analítica descriptiva implementado y validado.</div></div>
         <div class="eap-card componentes"><div class="eap-label">📦 Componentes</div><div class="eap-content">Diagnóstico · Proceso ETL · Tablero de Control · Pruebas de usabilidad.</div></div>
         <div class="eap-card acciones"><div class="eap-label">⚙️ Acciones</div><div class="eap-content">Entrevistas · Scripts de transformación · Diseño de interfaz · Encuesta de satisfacción.</div></div>
       </div>
+    </div>
+  </section>
 
-      <!-- MML OBJETIVO GENERAL -->
-      <h3>Pasos 7–9 · Objetivo General e Indicadores</h3>
+  <section class="section" id="plan-operativo">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="section-number">V.</span>
+          <h2>Desarrollo y Componentes del Plan Operativo</h2>
+        </div>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Ver Documento
+        </a>
+      </div>
+
+      <h3>Objetivo General e Indicadores</h3>
       <div class="table-wrapper">
         <table>
           <thead><tr><th colspan="3" style="text-align:center;">Objetivo General: Diseñar un modelo de analítica descriptiva que optimice el seguimiento de KPIs en una microempresa del sector servicios en Chía.</th></tr>
@@ -699,7 +624,6 @@
         </table>
       </div>
 
-      <!-- MML COMPONENTES -->
       <h3>Componentes del Marco Lógico</h3>
       <div class="table-wrapper">
         <table>
@@ -712,7 +636,6 @@
         </table>
       </div>
 
-      <!-- ACTIVIDADES -->
       <h3>Actividades del Proyecto</h3>
       <div class="table-wrapper">
         <table>
@@ -726,8 +649,22 @@
           </tbody>
         </table>
       </div>
+    </div>
+  </section>
 
-      <!-- PRESUPUESTO -->
+  <section class="section" id="resumen">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="section-number">VI & VII.</span>
+          <h2>Presupuesto y Resumen Narrativo</h2>
+        </div>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Ver Documento
+        </a>
+      </div>
+
       <h3>Presupuesto del Proyecto</h3>
       <div class="table-wrapper">
         <table>
@@ -742,7 +679,6 @@
         </table>
       </div>
 
-      <!-- RESUMEN NARRATIVO -->
       <h3>Resumen Narrativo del Proyecto</h3>
       <div class="summary-grid">
         <div class="summary-card highlight full"><div class="summary-label">Título del Proyecto</div><div class="summary-value">Implementación de un modelo de analítica descriptiva para optimizar el seguimiento de KPIs en una microempresa del sector servicios.</div></div>
@@ -755,21 +691,19 @@
         <div class="summary-card full"><div class="summary-label">Beneficios</div><div class="summary-value">La microempresa obtendrá mayor control sobre sus flujos operativos y financieros, mitigando la ceguera informativa.</div></div>
         <div class="summary-card highlight full"><div class="summary-label">Impacto Esperado</div><div class="summary-value">Se espera impactar positivamente la competitividad y madurez digital de la unidad productiva, alineándose con el enfoque MEDIT de transformación local.</div></div>
       </div>
-
     </div>
   </section>
 
-  <!-- §06 REFERENCIAS -->
   <section class="section" id="referencias">
     <div class="container">
       <div class="section-header">
         <div class="section-header-left">
-          <span class="section-number">§ 06</span>
+          <span class="section-number">VIII.</span>
           <h2>Referencias Bibliográficas — APA 7</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQB5sOuwhRTxRazv0dgtLcloAaj83910Dye2rl24_l7v3HA?e=KELEAg" target="_blank">
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Marco Teórico - Estado del Arte.pdf
+          Ver Documento
         </a>
       </div>
       <ul class="ref-list">
@@ -778,7 +712,7 @@
         <li class="ref-item"><span class="ref-num">[3]</span><span class="ref-text">Ezeife, E., Eyeregba, M. E., Mokogwu, C., &amp; Olorunyomi, T. D. (2024). Integrating predictive analytics into strategic decision-making. <em>World Journal of Advanced Research and Reviews, 24</em>(2), 2490–2507. <a href="https://doi.org/10.30574/wjarr.2024.24.2.3635" target="_blank">https://doi.org/10.30574/wjarr.2024.24.2.3635</a></span></li>
         <li class="ref-item"><span class="ref-num">[4]</span><span class="ref-text">Fontalvo, T., De La Hoz, E., &amp; De La Hoz, E. (2018). Método Análisis Envolvente de Datos y Redes Neuronales en la Evaluación de Eficiencia Técnica. <em>Información Tecnológica, 29</em>(6), 267–276. <a href="http://dx.doi.org/10.4067/S0718-07642018000600267" target="_blank">http://dx.doi.org/10.4067/S0718-07642018000600267</a></span></li>
         <li class="ref-item"><span class="ref-num">[5]</span><span class="ref-text">Islam, S., Hossain, E., Rahman, M. S., Rahman, M. M., Khan, S. I., &amp; Ashik, A. A. M. (2023). Digital Transformation in SMEs. <em>Journal of Business and Management Studies, 5</em>(6), 177–186. <a href="https://doi.org/10.32996/jbms.2023.5.6.14" target="_blank">https://doi.org/10.32996/jbms.2023.5.6.14</a></span></li>
-        <li class="ref-item"><span class="ref-num">[6]</span><span class="ref-text">Joyanes Aguilar, L. (2021). <em>Big Data, Business Intelligence y Data Science: La revolución de los datos</em>. Marcombo.</span></li>
+        <li class="ref,item"><span class="ref-num">[6]</span><span class="ref-text">Joyanes Aguilar, L. (2021). <em>Big Data, Business Intelligence y Data Science: La revolución de los datos</em>. Marcombo.</span></li>
         <li class="ref-item"><span class="ref-num">[7]</span><span class="ref-text">Llave, M. (2022). Data analytics in small and mid-size enterprises. <em>International Journal of Accounting Information Systems, 44</em>, 100547. <a href="https://doi.org/10.1016/j.accinf.2021.100547" target="_blank">https://doi.org/10.1016/j.accinf.2021.100547</a></span></li>
         <li class="ref-item"><span class="ref-num">[8]</span><span class="ref-text">Muñoz, A. (2019). <em>Modelo Educativo Digital Transmoderno (MEDIT)</em>. Universidad de Cundinamarca.</span></li>
         <li class="ref-item"><span class="ref-num">[9]</span><span class="ref-text">Pacheco, F. L., &amp; Gomes dos Santos, A. (2023). Implementación del análisis de datos en pequeñas empresas. <em>Journal of Interdisciplinary Debates, 4</em>(4), 111–138. <a href="https://doi.org/10.51249/jid.v4i04.1638" target="_blank">https://doi.org/10.51249/jid.v4i04.1638</a></span></li>
@@ -789,7 +723,6 @@
 
 </main>
 
-<!-- FOOTER -->
 <footer class="footer">
   <p style="margin-bottom:8px;">
     <strong>Data-Driven · Proyecto CAI-CTeI · 2026–2027</strong>
@@ -797,9 +730,6 @@
   <p style="margin-bottom:12px;">
     Universidad de Cundinamarca · Seccional Chía · Ingeniería de Sistemas
   </p>
-  <a href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQB5sOuwhRTxRazv0dgtLcloAaj83910Dye2rl24_l7v3HA?e=KELEAg" target="_blank" style="color:var(--gold-light);font-size:13px;">
-    📁 Acceder al Portafolio Digital Completo →
-  </a>
   <p style="margin-top:14px;font-size:11.5px;">Copyright © 2024–2026 UCundinamarca · www.ucundinamarca.edu.co · Vigilada MinEducación</p>
 </footer>
 
