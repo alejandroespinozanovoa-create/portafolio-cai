@@ -332,6 +332,88 @@
   .ref-text { color: var(--text); }
   .ref-text a { color: var(--teal); word-break: break-all; }
 
+  /* ── PECHAKUCHA PANEL ── */
+  .pechakucha-panel {
+    background: var(--navy);
+    border-radius: 12px;
+    border: 1px solid rgba(201,151,58,0.3);
+    overflow: hidden;
+  }
+  .pechakucha-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(201,151,58,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .pechakucha-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .pechakucha-body {
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+  .pechakucha-icon {
+    width: 64px; height: 64px;
+    background: rgba(201,151,58,0.15);
+    border: 1px solid rgba(201,151,58,0.35);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .pechakucha-desc {
+    color: rgba(255,255,255,0.65);
+    font-size: 14px;
+    max-width: 440px;
+    line-height: 1.6;
+  }
+  .btn-pechakucha {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 28px;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-pechakucha:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201,151,58,0.4);
+  }
+  .btn-pechakucha-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.75);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-pechakucha-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
+
   /* ── FOOTER ── */
   .footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 28px; font-size: 12.5px; }
   .footer strong { color: rgba(255,255,255,0.8); }
@@ -342,7 +424,6 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   .hero > div > * { animation: fadeUp 0.6s ease both; }
-
 
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
@@ -357,6 +438,7 @@
     .hero-actions { flex-direction: column; }
     nav { padding: 0 12px; gap: 4px; }
     nav a { padding: 14px 4px; font-size: 10.5px; }
+    .pechakucha-body { padding: 28px 20px; }
   }
 </style>
 </head>
@@ -385,9 +467,7 @@
       <div class="meta-item"><span class="meta-label">Docente</span><span class="meta-value">José Alejandro Martínez Escobar</span></div>
       <div class="meta-item"><span class="meta-label">Fecha</span><span class="meta-value">10 de Mayo, 2026</span></div>
     </div>
-    
     <div class="hero-divider"></div>
-    
     <div class="hero-actions">
       <a class="btn btn-gold" href="https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/jespinoza_ucundinamarca_edu_co/IgBOFhyDXsFLRrQUe0sBbmMKARVeuixuRxvujc04VhNGSNo?e=cwkbOm" target="_blank" rel="noopener noreferrer">
         📁 Ver Carpeta del Portafolio
@@ -428,11 +508,9 @@
           Ver Documento
         </a>
       </div>
-      
       <div class="highlight-box">
         <p>¿De qué manera el diseño e implementación de un modelo de analítica descriptiva permite optimizar el seguimiento de indicadores de rendimiento (KPIs) en una microempresa de servicios en Chía durante el periodo 2026–2027?</p>
       </div>
-
       <div class="obj-grid">
         <div class="obj-card">
           <div class="obj-icon">🎯</div>
@@ -709,7 +787,8 @@
     </div>
   </section>
 
-<section class="section" id="presentacion">
+  <!-- ── SECCIÓN IX: PRESENTACIÓN PECHAKUCHA ── -->
+  <section class="section" id="presentacion">
     <div class="container">
       <div class="section-header">
         <div class="section-header-left">
@@ -721,55 +800,25 @@
           Descargar .pptx
         </a>
       </div>
-      <!-- Info chips -->
-      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
-        <span style="background:var(--navy);color:var(--gold-light);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:1px;">🎯 20 Diapositivas</span>
-        <span style="background:var(--navy);color:var(--gold-light);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:1px;">⏱️ 20 Seg. por Slide</span>
-        <span style="background:var(--navy);color:var(--gold-light);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:1px;">🕐 Total: 6 min 40 seg</span>
-        <span style="background:rgba(27,108,168,0.12);color:var(--teal);border:1px solid rgba(27,108,168,0.3);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;">CAI · CTeI · 2026</span>
-      </div>
-      <!-- Embed viewer -->
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 24px rgba(0,0,0,0.1);background:var(--navy);">
-        <div style="background:var(--navy);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,151,58,0.2);">
-          <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);font-weight:600;letter-spacing:1px;">PECHAKUCHA · DATA-DRIVEN · CAI CTeI</span>
-          <a href="https://mailunicundiedu-my.sharepoint.com/:p:/g/personal/jespinoza_ucundinamarca_edu_co/IQBUoo-zIcTTQ77bkca4Q6W_AT8Mys7rPy94bOUOsXsNIno?e=2NZvha" target="_blank" rel="noopener noreferrer" style="font-size:11px;color:rgba(255,255,255,0.6);text-decoration:none;border:1px solid rgba(255,255,255,0.2);padding:4px 12px;border-radius:4px;">↗ Pantalla completa</a>
+
+      <div class="pechakucha-panel">
+        <div class="pechakucha-header">
+          <span class="pechakucha-title">PECHAKUCHA · DATA-DRIVEN · CAI CTeI · 2026</span>
+          <a href="https://mailunicundiedu-my.sharepoint.com/:p:/g/personal/jespinoza_ucundinamarca_edu_co/IQBUoo-zIcTTQ77bkca4Q6W_AT8Mys7rPy94bOUOsXsNIno?e=2NZvha" target="_blank" rel="noopener noreferrer" style="font-size:11px;color:rgba(255,255,255,0.5);text-decoration:none;border:1px solid rgba(255,255,255,0.15);padding:4px 12px;border-radius:4px;white-space:nowrap;">↗ Abrir en SharePoint</a>
         </div>
-        <iframe
-          src="https://mailunicundiedu-my.sharepoint.com/:p:/g/personal/jespinoza_ucundinamarca_edu_co/IQBUoo-zIcTTQ77bkca4Q6W_AT8Mys7rPy94bOUOsXsNIno?e=2NZvha&action=embedview&wdAr=1.7777777777777777"
-          width="100%"
-          height="540"
-          frameborder="0"
-          style="display:block;"
-          title="PechaKucha Data-Driven CAI"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <!-- Structure summary -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:20px;">
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;border-top:3px solid var(--teal);">
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--teal);margin-bottom:6px;">Slides 1–3</div>
-          <div style="font-size:13px;font-weight:600;color:var(--navy);">Inicio Impactante</div>
-          <div style="font-size:12px;color:var(--text-muted);">Dato, Problema y Contexto</div>
-        </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;border-top:3px solid var(--teal);">
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--teal);margin-bottom:6px;">Slides 4–8</div>
-          <div style="font-size:13px;font-weight:600;color:var(--navy);">Pregunta & Objetivos</div>
-          <div style="font-size:12px;color:var(--text-muted);">Tema e Importancia</div>
-        </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;border-top:3px solid var(--gold);">
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:6px;">Slides 9–13</div>
-          <div style="font-size:13px;font-weight:600;color:var(--navy);">Líneas & ODS</div>
-          <div style="font-size:12px;color:var(--text-muted);">Investigación y Conexión</div>
-        </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;border-top:3px solid var(--gold);">
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:6px;">Slides 14–17</div>
-          <div style="font-size:13px;font-weight:600;color:var(--navy);">Marco Lógico</div>
-          <div style="font-size:12px;color:var(--text-muted);">Actores, Árboles y Alternativas</div>
-        </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;border-top:3px solid var(--navy);">
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--navy);margin-bottom:6px;">Slides 18–21</div>
-          <div style="font-size:13px;font-weight:600;color:var(--navy);">Resultados & Cierre</div>
-          <div style="font-size:12px;color:var(--text-muted);">Impacto, Conclusión y Acción</div>
+        <div class="pechakucha-body">
+          <div class="pechakucha-icon">📊</div>
+          <p class="pechakucha-desc">La presentación está alojada en SharePoint. Haz clic en el botón para verla o descargala directamente en formato .pptx.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+            <a class="btn-pechakucha" href="https://mailunicundiedu-my.sharepoint.com/:p:/g/personal/jespinoza_ucundinamarca_edu_co/IQBUoo-zIcTTQ77bkca4Q6W_AT8Mys7rPy94bOUOsXsNIno?e=2NZvha" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Ver Presentación
+            </a>
+            <a class="btn-pechakucha-outline" href="https://mailunicundiedu-my.sharepoint.com/:p:/g/personal/jespinoza_ucundinamarca_edu_co/IQBUoo-zIcTTQ77bkca4Q6W_AT8Mys7rPy94bOUOsXsNIno?e=2NZvha" target="_blank" rel="noopener noreferrer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Descargar .pptx
+            </a>
+          </div>
         </div>
       </div>
     </div>
