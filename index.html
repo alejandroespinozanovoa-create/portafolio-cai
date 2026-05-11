@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Anteproyecto Data-Driven: Modelo de Analítica Descriptiva para la Optimización de KPIs en Microempresas de Servicios.">
 <title>Data-Driven · Anteproyecto | José Alejandro Espinoza Novoa</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -293,7 +294,8 @@
 
   /* ── EAP ── */
   .eap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; margin-bottom: 24px; }
-  .eap-card { border-radius: 8px; padding: 16px 18px; border: 1px solid; }
+  .eap-card { border-radius: 8px; padding: 16px 18px; border: 1px solid; transition: transform 0.2s, box-shadow 0.2s; }
+  .eap-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
   .eap-card.fines { background: rgba(45,122,79,0.07); border-color: rgba(45,122,79,0.3); }
   .eap-card.proposito { background: rgba(27,108,168,0.07); border-color: rgba(27,108,168,0.3); }
   .eap-card.componentes { background: rgba(201,151,58,0.07); border-color: rgba(201,151,58,0.3); }
@@ -307,11 +309,13 @@
 
   /* ── RESUMEN NARRATIVO ── */
   .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
-  .summary-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .summary-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; transition: border-color 0.2s; }
+  .summary-card:hover { border-color: var(--teal); }
   .summary-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--teal); margin-bottom: 6px; }
   .summary-value { font-size: 14px; color: var(--text); line-height: 1.55; }
   .summary-card.full { grid-column: 1 / -1; }
   .summary-card.highlight { background: var(--navy); border-color: var(--navy); }
+  .summary-card.highlight:hover { border-color: var(--gold); }
   .summary-card.highlight .summary-label { color: var(--gold-light); }
   .summary-card.highlight .summary-value { color: rgba(255,255,255,0.88); }
 
@@ -365,6 +369,7 @@
   <a href="#consistencia">Consistencia</a>
   <a href="#metodologia">Metodología</a>
   <a href="#plan-operativo">Plan Operativo</a>
+  <a href="#resumen">Resumen</a>
   <a href="#referencias">Referencias</a>
 </nav>
 
@@ -379,20 +384,16 @@
       <div class="meta-item"><span class="meta-label">Docente</span><span class="meta-value">José Alejandro Martínez Escobar</span></div>
       <div class="meta-item"><span class="meta-label">Fecha</span><span class="meta-value">10 de Mayo, 2026</span></div>
     </div>
+    
     <div class="hero-divider"></div>
+    
     <div class="hero-actions">
-  </div>
-<div class="hero-divider"></div>
-    <div class="hero-actions">
-      <a class="btn btn-gold" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQB5sOuwhRTxRazv0dgtLcloAaj83910Dye2rl24_l7v3HA?e=KELEAg" target="_blank">
-        📁 Ver Portafolio Digital Completo
+      <a class="btn btn-gold" href="https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/jespinoza_ucundinamarca_edu_co/IgBOFhyDXsFLRrQUe0sBbmMKARVeuixuRxvujc04VhNGSNo?e=cwkbOm" target="_blank" rel="noopener noreferrer">
+        📁 Ver Carpeta del Portafolio
       </a>
-      <a class="btn btn-outline" href="#marco-logico">↓ Marco Lógico</a>
+      <a class="btn btn-outline" href="#intro">↓ Leer Anteproyecto</a>
     </div>
-  </div> <!-- Este div cierra el .container correctamente -->
-</header>
-      <a class="btn btn-outline" href="#marco-logico">↓ Marco Lógico</a>
-    </div>
+  </div>
 </header>
 
 <main>
@@ -404,7 +405,7 @@
           <span class="section-number">I.</span>
           <h2>Introducción y Planteamiento del Problema</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQA34c9fi78BSJxJvBcw_kgkASYEfxpkEsZIqafGfmS0Qcw?e=Wzvtqx" target="_blank">
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQA34c9fi78BSJxJvBcw_kgkASYEfxpkEsZIqafGfmS0Qcw?e=Wzvtqx" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Ver Documento
         </a>
@@ -421,7 +422,7 @@
           <span class="section-number">II.</span>
           <h2>Pregunta de Investigación y Objetivos</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQA34c9fi78BSJxJvBcw_kgkASYEfxpkEsZIqafGfmS0Qcw?e=C0lKaY" target="_blank">
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQA34c9fi78BSJxJvBcw_kgkASYEfxpkEsZIqafGfmS0Qcw?e=C0lKaY" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Ver Documento
         </a>
@@ -459,7 +460,7 @@
           <span class="section-number">III.</span>
           <h2>Matriz de Consistencia</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCqKZ-M8YRiTIbC-4acv0hVARB14PX4_BIY0noh_DMtnHU?e=5gaQ5x" target="_blank">
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCqKZ-M8YRiTIbC-4acv0hVARB14PX4_BIY0noh_DMtnHU?e=5gaQ5x" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Ver Documento
         </a>
@@ -513,7 +514,7 @@
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
         <h3>Mapa de Actores y Análisis de Involucrados</h3>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Bykhld" target="_blank">Ver Documento</a>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Bykhld" target="_blank" rel="noopener noreferrer">Ver Documento</a>
       </div>
       <div class="table-wrapper">
         <table>
@@ -531,7 +532,7 @@
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
         <h3>Listado de Involucrados (E · F · R) y Mapa de Interés</h3>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Bykhld" target="_blank">Ver Documento</a>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Bykhld" target="_blank" rel="noopener noreferrer">Ver Documento</a>
       </div>
       <div class="table-wrapper">
         <table>
@@ -551,7 +552,7 @@
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
         <h3>Árbol del Problema</h3>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">Ver Documento</a>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank" rel="noopener noreferrer">Ver Documento</a>
       </div>
       <div class="tree-container">
         <div class="tree-branch-row">
@@ -574,7 +575,7 @@
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
         <h3>Árbol de Objetivos</h3>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">Ver Documento</a>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank" rel="noopener noreferrer">Ver Documento</a>
       </div>
       <div class="tree-container">
         <div class="tree-branch-row">
@@ -594,7 +595,7 @@
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
         <h3>Identificación de Acciones y Estructura Analítica del Proyecto (EAP)</h3>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">Ver Documento</a>
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank" rel="noopener noreferrer">Ver Documento</a>
       </div>
       <div class="actions-list">
         <div class="action-item"><div class="action-num">1</div><div class="action-text">Levantamiento de requisitos con el microempresario.</div></div>
@@ -618,7 +619,7 @@
           <span class="section-number">V.</span>
           <h2>Desarrollo y Componentes del Plan Operativo</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Ver Documento
         </a>
@@ -672,7 +673,7 @@
           <span class="section-number">VI & VII.</span>
           <h2>Presupuesto y Resumen Narrativo</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank">
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQCPAGoZSizARJ3jMP-tRn49AcXaej6tSkKL7KAkINjEKt4?e=Hl02Rq" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Ver Documento
         </a>
@@ -714,22 +715,22 @@
           <span class="section-number">VIII.</span>
           <h2>Referencias Bibliográficas — APA 7</h2>
         </div>
-        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQAdJaOo6U8OT4VLGSieo5G6ATFuQdxU-PniosddoiULX2A?e=So7h2l" target="_blank">
+        <a class="pdf-link" href="https://mailunicundiedu-my.sharepoint.com/:b:/g/personal/jespinoza_ucundinamarca_edu_co/IQAdJaOo6U8OT4VLGSieo5G6ATFuQdxU-PniosddoiULX2A?e=So7h2l" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Ver Documento
         </a>
       </div>
       <ul class="ref-list">
-        <li class="ref-item"><span class="ref-num">[1]</span><span class="ref-text">Anyanwu, E., &amp; Ohiagu, O. P. (2022). Data analytics in small and mid-size enterprises: Enablers and inhibitors for business value. <em>Journal of Enterprise and Business Intelligence, 2</em>(2), 77–88. <a href="https://doi.org/10.53759/5181/JEBI202202009" target="_blank">https://doi.org/10.53759/5181/JEBI202202009</a></span></li>
-        <li class="ref-item"><span class="ref-num">[2]</span><span class="ref-text">Bar-Gill, S., Brynjolfsson, E., &amp; Hak, N. (2023). <em>Helping Small Businesses become more Data-Driven: A Field Experiment on eBay</em> (NBER Working Paper No. w31089). National Bureau of Economic Research. <a href="https://www.nber.org/papers/w31089" target="_blank">https://www.nber.org/papers/w31089</a></span></li>
-        <li class="ref-item"><span class="ref-num">[3]</span><span class="ref-text">Ezeife, E., Eyeregba, M. E., Mokogwu, C., &amp; Olorunyomi, T. D. (2024). Integrating predictive analytics into strategic decision-making. <em>World Journal of Advanced Research and Reviews, 24</em>(2), 2490–2507. <a href="https://doi.org/10.30574/wjarr.2024.24.2.3635" target="_blank">https://doi.org/10.30574/wjarr.2024.24.2.3635</a></span></li>
-        <li class="ref-item"><span class="ref-num">[4]</span><span class="ref-text">Fontalvo, T., De La Hoz, E., &amp; De La Hoz, E. (2018). Método Análisis Envolvente de Datos y Redes Neuronales en la Evaluación de Eficiencia Técnica. <em>Información Tecnológica, 29</em>(6), 267–276. <a href="http://dx.doi.org/10.4067/S0718-07642018000600267" target="_blank">http://dx.doi.org/10.4067/S0718-07642018000600267</a></span></li>
-        <li class="ref-item"><span class="ref-num">[5]</span><span class="ref-text">Islam, S., Hossain, E., Rahman, M. S., Rahman, M. M., Khan, S. I., &amp; Ashik, A. A. M. (2023). Digital Transformation in SMEs. <em>Journal of Business and Management Studies, 5</em>(6), 177–186. <a href="https://doi.org/10.32996/jbms.2023.5.6.14" target="_blank">https://doi.org/10.32996/jbms.2023.5.6.14</a></span></li>
-        <li class="ref,item"><span class="ref-num">[6]</span><span class="ref-text">Joyanes Aguilar, L. (2021). <em>Big Data, Business Intelligence y Data Science: La revolución de los datos</em>. Marcombo.</span></li>
-        <li class="ref-item"><span class="ref-num">[7]</span><span class="ref-text">Llave, M. (2022). Data analytics in small and mid-size enterprises. <em>International Journal of Accounting Information Systems, 44</em>, 100547. <a href="https://doi.org/10.1016/j.accinf.2021.100547" target="_blank">https://doi.org/10.1016/j.accinf.2021.100547</a></span></li>
+        <li class="ref-item"><span class="ref-num">[1]</span><span class="ref-text">Anyanwu, E., &amp; Ohiagu, O. P. (2022). Data analytics in small and mid-size enterprises: Enablers and inhibitors for business value. <em>Journal of Enterprise and Business Intelligence, 2</em>(2), 77–88. <a href="https://doi.org/10.53759/5181/JEBI202202009" target="_blank" rel="noopener noreferrer">https://doi.org/10.53759/5181/JEBI202202009</a></span></li>
+        <li class="ref-item"><span class="ref-num">[2]</span><span class="ref-text">Bar-Gill, S., Brynjolfsson, E., &amp; Hak, N. (2023). <em>Helping Small Businesses become more Data-Driven: A Field Experiment on eBay</em> (NBER Working Paper No. w31089). National Bureau of Economic Research. <a href="https://www.nber.org/papers/w31089" target="_blank" rel="noopener noreferrer">https://www.nber.org/papers/w31089</a></span></li>
+        <li class="ref-item"><span class="ref-num">[3]</span><span class="ref-text">Ezeife, E., Eyeregba, M. E., Mokogwu, C., &amp; Olorunyomi, T. D. (2024). Integrating predictive analytics into strategic decision-making. <em>World Journal of Advanced Research and Reviews, 24</em>(2), 2490–2507. <a href="https://doi.org/10.30574/wjarr.2024.24.2.3635" target="_blank" rel="noopener noreferrer">https://doi.org/10.30574/wjarr.2024.24.2.3635</a></span></li>
+        <li class="ref-item"><span class="ref-num">[4]</span><span class="ref-text">Fontalvo, T., De La Hoz, E., &amp; De La Hoz, E. (2018). Método Análisis Envolvente de Datos y Redes Neuronales en la Evaluación de Eficiencia Técnica. <em>Información Tecnológica, 29</em>(6), 267–276. <a href="http://dx.doi.org/10.4067/S0718-07642018000600267" target="_blank" rel="noopener noreferrer">http://dx.doi.org/10.4067/S0718-07642018000600267</a></span></li>
+        <li class="ref-item"><span class="ref-num">[5]</span><span class="ref-text">Islam, S., Hossain, E., Rahman, M. S., Rahman, M. M., Khan, S. I., &amp; Ashik, A. A. M. (2023). Digital Transformation in SMEs. <em>Journal of Business and Management Studies, 5</em>(6), 177–186. <a href="https://doi.org/10.32996/jbms.2023.5.6.14" target="_blank" rel="noopener noreferrer">https://doi.org/10.32996/jbms.2023.5.6.14</a></span></li>
+        <li class="ref-item"><span class="ref-num">[6]</span><span class="ref-text">Joyanes Aguilar, L. (2021). <em>Big Data, Business Intelligence y Data Science: La revolución de los datos</em>. Marcombo.</span></li>
+        <li class="ref-item"><span class="ref-num">[7]</span><span class="ref-text">Llave, M. (2022). Data analytics in small and mid-size enterprises. <em>International Journal of Accounting Information Systems, 44</em>, 100547. <a href="https://doi.org/10.1016/j.accinf.2021.100547" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.accinf.2021.100547</a></span></li>
         <li class="ref-item"><span class="ref-num">[8]</span><span class="ref-text">Muñoz, A. (2019). <em>Modelo Educativo Digital Transmoderno (MEDIT)</em>. Universidad de Cundinamarca.</span></li>
-        <li class="ref-item"><span class="ref-num">[9]</span><span class="ref-text">Pacheco, F. L., &amp; Gomes dos Santos, A. (2023). Implementación del análisis de datos en pequeñas empresas. <em>Journal of Interdisciplinary Debates, 4</em>(4), 111–138. <a href="https://doi.org/10.51249/jid.v4i04.1638" target="_blank">https://doi.org/10.51249/jid.v4i04.1638</a></span></li>
-        <li class="ref-item"><span class="ref-num">[10]</span><span class="ref-text">Ray, A., Kumar, R., &amp; Deepanshi. (2025). Data Analytics for Business Decision-Making. <em>Economic Sciences (ES), 21</em>(02(S)), 191–200. <a href="https://doi.org/10.69889/gy56vg95" target="_blank">https://doi.org/10.69889/gy56vg95</a></span></li>
+        <li class="ref-item"><span class="ref-num">[9]</span><span class="ref-text">Pacheco, F. L., &amp; Gomes dos Santos, A. (2023). Implementación del análisis de datos en pequeñas empresas. <em>Journal of Interdisciplinary Debates, 4</em>(4), 111–138. <a href="https://doi.org/10.51249/jid.v4i04.1638" target="_blank" rel="noopener noreferrer">https://doi.org/10.51249/jid.v4i04.1638</a></span></li>
+        <li class="ref-item"><span class="ref-num">[10]</span><span class="ref-text">Ray, A., Kumar, R., &amp; Deepanshi. (2025). Data Analytics for Business Decision-Making. <em>Economic Sciences (ES), 21</em>(02(S)), 191–200. <a href="https://doi.org/10.69889/gy56vg95" target="_blank" rel="noopener noreferrer">https://doi.org/10.69889/gy56vg95</a></span></li>
       </ul>
     </div>
   </section>
@@ -743,7 +744,6 @@
   <p style="margin-bottom:12px;">
     Universidad de Cundinamarca · Seccional Chía · Ingeniería de Sistemas
   </p>
-  <p style="margin-top:14px;font-size:11.5px;">Copyright © 2024–2026 UCundinamarca · www.ucundinamarca.edu.co · Vigilada MinEducación</p>
 </footer>
 
 </body>
